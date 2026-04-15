@@ -16,4 +16,16 @@
 
 #! @Description
 #!   Insert documentation for your function here
-DeclareGlobalFunction( "BayesianNetworks_Example" );
+DeclareCategory("IsBayesianNetwork", IsDigraph);
+
+#! @Description
+#!   Insert documentation for your function here
+DeclareOperation("BayesianNetwork", [IsDigraph, IsList]);
+
+#! @Description
+#!   Insert documentation for your function here
+DeclareOperation("BeliefPropagation", [IsDigraph, IsInt, IsList]);
+
+#! @Description
+#!   Insert documentation for your function here
+DeclareOperation("GetCPT", [IsDigraph, IsInt]);
