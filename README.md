@@ -1,19 +1,32 @@
-# The GAP package BayesianNetworks
+# BayesianNetworks (GAP Package)
 
-TODO: add a description of your package; perhaps also instructions how how to
-install and use it, resp. where to find out more
+BayesianNetworks is a GAP package for constructing and performing inference on Bayesian networks. It provides functionality to represent probabilistic graphical models as directed graphs and to compute posterior probabilities using belief propagation.
 
+---
 
-## Contact
+## Features
 
-TODO: add info on how to contact you and/or how to report issues with your
-package
+- Construction of Bayesian network objects from directed graphs
+- Validation of network structure (restricted to polytrees)
+- Support for binary-valued random variables
+- Representation of conditional probability tables (CPTs)
+- Exact inference using Pearl’s belief propagation algorithm
+- Access to CPTs for inspection and analysis
 
-## License
+---
 
-TODO: Provide information on the license of your package. A license is
-important as it determines who has a right to distribute your package.
-This package is distributed under the terms of the GNU General Public
-License v2.0 or later. This is also the license used by GAP itself and
-by many GAP packages.
+## Requirements
 
+- GAP (version 4.x)
+- The `Digraphs` package
+
+---
+
+## Installation
+
+1. Download or clone this repository.
+2. Place the `BayesianNetworks` directory into the `pkg/` directory of your GAP installation.
+3. Start GAP and load the package:
+
+```gap
+LoadPackage("BayesianNetworks");

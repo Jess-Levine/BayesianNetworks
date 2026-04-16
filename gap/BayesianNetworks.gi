@@ -1,5 +1,5 @@
 #
-# BayesianNetworks: Bayesian network objects and belief propagation
+# BayesianNetworks: Bayesian Network objects and belief propagation
 #
 # Implementations
 #
@@ -66,7 +66,23 @@ function(BN, X, e)
     priors := List([1..n], i -> fail);
     likelihoods := List([1..n], i -> fail);
 
-    # for every node, determine if it is observed, and if it is store it's value
+	# For every node; if it is a root or leaf node, it gets an inital value of prior or likelihood
+    for i in [1..n] do
+      # check if root node (no parents) or leaf node (no children)
+      if Length(InNeighbours(BN)[i]) = 0 then
+        priors[i] := DigraphVertexLabel(BN,i)[1];
+	  fi;
+	
+      if Length(OutNeighbours(BN)[i]) = 0 then
+        likelihoods[i] := [1, 1];
+      fi;
+    od;
+
+	if Length(e) = 0 then
+		return;
+	fi;
+
+	# for every node, determine if it is observed, and if it is store it's value
     evidence_lookup := List([1..n], i -> fail);
     for pair in e do
       evidence_lookup[pair[1]] := pair[2];
@@ -82,12 +98,6 @@ function(BN, X, e)
           priors[i] := [0,1];
           likelihoods[i] := [0,1];
         fi;
-      # check if root node (no parents) or leaf node (no children)
-      elif Length(InNeighbours(BN)[i]) = 0 then
-        priors[i] := DigraphVertexLabel(BN,i)[1];
-
-      elif Length(OutNeighbours(BN)[i]) = 0 then
-        likelihoods[i] := [1, 1];
       fi;
     od;
   end;
