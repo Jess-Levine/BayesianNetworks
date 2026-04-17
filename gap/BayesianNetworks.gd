@@ -4,13 +4,13 @@
 
 #! @Chapter Introduction
 #!
-#! The \texttt{BayesianNetworks} package provides functionality for the
+#! The BayesianNetworks package provides functionality for the
 #! construction and manipulation of Bayesian networks within the GAP system.
 #! A Bayesian network is a probabilistic graphical model represented as a
-#! directed acyclic graph (DAG), in which vertices correspond to random
+#! directed acyclic graph, in which vertices correspond to random
 #! variables and edges represent conditional dependencies.
 #!
-#! This package extends the \texttt{Digraphs} package by associating each
+#! This package extends the Digraphs package by associating each
 #! vertex with a conditional probability table (CPT), allowing probabilistic
 #! models to be defined directly on graph structures. The resulting objects
 #! combine graph-theoretic and probabilistic representations within a single
@@ -27,13 +27,11 @@
 #!
 #! The package provides the following core functionality:
 #!
-#! \begin{itemize}
-#! \item Construction and validation of Bayesian network objects from a
-#!       directed graph and a list of CPTs
-#! \item Representation of conditional probability tables as vertex labels
-#! \item Exact inference using belief propagation
-#! \item Retrieval of CPTs associated with individual vertices
-#! \end{itemize}
+#! Construction and validation of Bayesian network objects from a directed graph and a list of CPTs
+#!
+#! Exact inference using belief propagation
+#!
+#! Retrieval of CPTs associated with individual vertices
 #!
 #! Bayesian networks created using this package are required to be polytrees,
 #! ensuring that exact inference via message passing is well-defined and
@@ -45,42 +43,32 @@
 #! The following example demonstrates the construction of a simple Bayesian
 #! network and the evaluation of a posterior probability.
 #!
-#! First, construct a directed graph using the \texttt{Digraphs} package:
+#! First, construct a directed graph using the Digraphs package:
 #!
-#! \begin{verbatim}
 #! D := Digraph([[2,3], [], []]);
-#! \end{verbatim}
 #!
 #! Define conditional probability tables (CPTs) for each vertex:
 #!
-#! \begin{verbatim}
 #! CPT := [
 #!   [ [0.9, 0.1] ],
 #!   [ [0.7, 0.3], [0.2, 0.8] ],
 #!   [ [0.6, 0.4], [0.1, 0.9] ]
 #! ];
-#! \end{verbatim}
 #!
 #! Construct the Bayesian network:
 #!
-#! \begin{verbatim}
 #! BN := BayesianNetwork(D, CPT);
-#! \end{verbatim}
 #!
 #! Perform belief propagation to compute the posterior probability of a node:
 #!
-#! \begin{verbatim}
 #! BeliefPropagation(BN, 1, [ [2, true] ]);
-#! \end{verbatim}
 #!
 #! This returns a probability vector representing the belief of the target
 #! node given the specified evidence.
 #!
 #! Conditional probability tables can be accessed using:
 #!
-#! \begin{verbatim}
 #! GetCPT(BN, 1);
-#! \end{verbatim}
 #!
 #! which returns the CPT associated with vertex 1.
 #!
